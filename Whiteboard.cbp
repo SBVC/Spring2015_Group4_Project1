@@ -28,10 +28,12 @@
 		<Unit filename="src/Assignment.cpp" />
 		<Unit filename="src/Assignment.h" />
 		<Unit filename="src/AssignmentType.h" />
+		<Unit filename="src/Assignments.cpp" />
+		<Unit filename="src/Assignments.h" />
+		<Unit filename="src/Student.cpp" />
+		<Unit filename="src/Student.h" />
 		<Unit filename="src/W06L.cpp" />
 		<Unit filename="src/main.cpp" />
-		<Unit filename="src/whiteboard.cpp" />
-		<Unit filename="src/whiteboard.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

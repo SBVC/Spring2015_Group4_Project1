@@ -9,7 +9,7 @@ using namespace std;
 
 SUITE(AssignmentTests)
 {
-    // Test getID method
+    // Test getID method.
     TEST(getIDTest) //only works if first test DO NOT CHANGE ORDER
     {
         Assignment assignment = Assignment(); // default (invalid) assignment
@@ -37,7 +37,7 @@ SUITE(AssignmentTests)
         CHECK_EQUAL(4, a4.getRawID());
     }
 
-    // Tests ALL constructor forms
+    // Tests ALL constructor forms.
     TEST(constructorTest)
     {
         string title = "Custom Title";
@@ -50,19 +50,19 @@ SUITE(AssignmentTests)
         CHECK_EQUAL(Assignment::defaultMaxScore, invalidAssignment.getMaxScore());
 
         Assignment simpleAssignment = Assignment(title);
-        CHECK_EQUAL(title, invalidAssignment.getTitle());
-        CHECK_EQUAL(Assignment::defaultCustomType, invalidAssignment.getType());
-        CHECK_EQUAL(Assignment::defaultMaxScore, invalidAssignment.getMaxScore());
+        CHECK_EQUAL(title, simpleAssignment.getTitle());
+        CHECK_EQUAL("Quiz", simpleAssignment.getType());
+        CHECK_EQUAL(Assignment::defaultMaxScore, simpleAssignment.getMaxScore());
 
         Assignment simpleAssignment2 = Assignment(title, customType);
-        CHECK_EQUAL(title, invalidAssignment.getTitle());
-        CHECK_EQUAL(customType, invalidAssignment.getType());
-        CHECK_EQUAL(Assignment::defaultMaxScore, invalidAssignment.getMaxScore());
+        CHECK_EQUAL(title, simpleAssignment2.getTitle());
+        CHECK_EQUAL(customType, simpleAssignment2.getType());
+        CHECK_EQUAL(Assignment::defaultMaxScore, simpleAssignment2.getMaxScore());
 
         Assignment simpleAssignment3 = Assignment(title, maxScore);
-        CHECK_EQUAL(title, invalidAssignment.getTitle());
-        CHECK_EQUAL(Assignment::defaultCustomType, invalidAssignment.getType());
-        CHECK_EQUAL(maxScore, invalidAssignment.getMaxScore());
+        CHECK_EQUAL(title, simpleAssignment3.getTitle());
+        CHECK_EQUAL("Quiz", simpleAssignment3.getType());
+        CHECK_EQUAL(maxScore, simpleAssignment3.getMaxScore());
 
         Assignment assignment = Assignment(title, customType, maxScore);
         CHECK_EQUAL(title, assignment.getTitle());
@@ -70,12 +70,14 @@ SUITE(AssignmentTests)
         CHECK_EQUAL(maxScore, assignment.getMaxScore());
     }
 
+    // Test getMaxScore method.
     TEST(getMaxScoreTest)
     {
         Assignment assignment = Assignment();
         CHECK_EQUAL(Assignment::defaultMaxScore, assignment.getMaxScore());
     }
 
+    // Test setMaxScore method.
     TEST(setMaxScoreTest)
     {
         unsigned int newMaxScore = 10;
@@ -85,40 +87,48 @@ SUITE(AssignmentTests)
         CHECK_EQUAL(newMaxScore, assignment.getMaxScore());
     }
 
+    // Test getTitle method.
     TEST(getTitleTest)
     {
         Assignment assignment = Assignment();
         CHECK_EQUAL(Assignment::defaultTitle, assignment.getTitle());
     }
 
+    // Test getType method with the default type (should be Quiz).
     TEST(getTypeTest)
     {
-        //test default, default from class, and random value
+        Assignment quizAssignment = Assignment("Some Title", Assignment::defaultType);
+        //CHECK_EQUAL(Assignment::defaultType, quizAssignment.getType());
+        CHECK_EQUAL("Quiz", quizAssignment.getType());
+    }
+
+    // Test getType method with a default object and a custom type.
+    TEST(getCustomTypeTest)
+    {
         string fakeTitle = "Fake";
 
         Assignment invalidAssignment = Assignment();
         CHECK_EQUAL(Assignment::defaultCustomType, invalidAssignment.getType());
 
-        Assignment quizAssignment = Assignment("Some Title", Assignment::defaultType);
-        //CHECK_EQUAL(Assignment::defaultType, quizAssignment.getType());
-        CHECK_EQUAL("Quiz", quizAssignment.getType());
-
         Assignment fakeAssignment = Assignment("Fake", fakeTitle);
         CHECK_EQUAL(fakeTitle, fakeAssignment.getType());
     }
 
-    // Test setting types, both standard and custom.
+    // Test setType method with enumerated value.
+    TEST(setEnumeratedTypeTest)
+    {
+        Assignment invalidAssignment = Assignment(Assignment::defaultTitle, Discussion);
+        CHECK_EQUAL("Discussion", invalidAssignment.getType());
+    }
+
+    // Test setType method with string.
     TEST(setTypeTest)
     {
         string customType = "More Custom 2.0";
 
         Assignment invalidAssignment = Assignment();
-
         invalidAssignment.setType(customType);
         CHECK_EQUAL(customType, invalidAssignment.getType());
-
-        invalidAssignment.setType(Discussion);
-        CHECK_EQUAL("Discussion", invalidAssignment.getType());
     }
 }
 

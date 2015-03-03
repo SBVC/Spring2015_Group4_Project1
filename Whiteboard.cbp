@@ -23,6 +23,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename=".gitignore" />
+		<Unit filename="README.md" />
 		<Unit filename="src/Assignment.cpp" />
 		<Unit filename="src/Assignment.h" />
 		<Unit filename="src/AssignmentType.h" />

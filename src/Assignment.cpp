@@ -92,6 +92,7 @@ string Assignment::getType()
         return customType;
     } else {
         //figure out how to throw an error and throw one here
+        //throw invalid type exception
     }
 }
 

@@ -20,12 +20,18 @@
 					<Add option="-s" />
 					<Add library="..\UnitTest++\Deliv\Release\libUnitTest++.a" />
 				</Linker>
+				<ExtraCommands>
+					<Add after="$exe_output" />
+					<Mode after="always" />
+				</ExtraCommands>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="AssignmentTests.h" />
+		<Unit filename="StudentTests.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

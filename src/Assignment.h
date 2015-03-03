@@ -36,7 +36,7 @@ class Assignment
         const static unsigned int defaultMaxScore;
 
     protected:
-        unsigned int getNextID() { return nextID++; }
+        static unsigned int getNextID() { return nextID++; }
 
     private:
         static unsigned int nextID;

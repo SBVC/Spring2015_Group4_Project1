@@ -2,7 +2,9 @@
 #include <cstdlib>
 #include <vector>
 #include <algorithm> // for std:fill used to populate vectors
-#include "whiteboard.h"
+#include "Student.h"
+#include "Assignments.h"
+//#include "whiteboard.h"
 
 /*
  *    File         : W06L.txt (Week 6 lab) - Group Project 1 4
@@ -353,7 +355,7 @@ int mainMenu() {
 } while (mainSelect != 4 && !cin.fail());
 }
 
-/*
+//*
 int main() {
     int callMenu = 0;
 
@@ -365,5 +367,5 @@ int main() {
      return EXIT_SUCCESS;
 
 }
-*/
+//*/
 

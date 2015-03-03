@@ -11,15 +11,18 @@ class Assignment
     public:
         Assignment();
         Assignment(string titleVal, string sType, unsigned int iMaxScore);
+        Assignment(string titleVal);
+        Assignment(string titleVal, string sType);
+        Assignment(string titleVal, unsigned int iMaxScore);
         unsigned int getMaxScore() { return maxScore; }
         void setMaxScore(unsigned int val) { maxScore = val; }
-        string getID() { return "a"+id; }
+        string getID();
         unsigned int getRawID() { return id; }
         string getTitle() { return title; }
         void setTitle(string val) { title = val; }
         string getType();
         void setType(AssignmentType val) { type = val; }
-        void setType(AssignmentType tVal, string customName);
+        void setType(string customName);
     //protected:
     private:
         static unsigned int nextID;
@@ -29,5 +32,7 @@ class Assignment
         string customType;
         AssignmentType type;
 };
+
+#include "Assignment.cpp" //why
 
 #endif // ASSIGNMENT_H

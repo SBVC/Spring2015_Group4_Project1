@@ -31,6 +31,48 @@ Assignment::Assignment(string titleVal, string sType, unsigned int iMaxScore)
     }
 }
 
+Assignment::Assignment(string titleVal)
+{
+    id = nextID;    nextID++;
+    title = titleVal;
+    maxScore = 100;
+    type = Quiz;
+}
+
+Assignment::Assignment(string titleVal, string sType)
+{
+    id = nextID;    nextID++;
+    title = titleVal;
+    maxScore = 100;
+    if (sType == "Quiz"){
+        type = Quiz;
+    } else if (sType == "Exam"){
+        type = Exam;
+    } else if (sType == "Program"){
+        type = Program;
+    } else if (sType == "Discussion"){
+        type = Discussion;
+    } else {
+        type = Custom;
+        customType = sType;
+    }
+}
+
+Assignment::Assignment(string titleVal, unsigned int iMaxScore)
+{
+    id = nextID;    nextID++;
+    title = titleVal;
+    maxScore = iMaxScore;
+    type = Quiz;
+}
+
+string Assignment::getID()
+{
+    stringstream convert;
+    convert << "a" << id;
+    return convert.str();
+}
+
 string Assignment::getType()
 {
     if (type == Quiz){
@@ -49,14 +91,8 @@ string Assignment::getType()
     }
 }
 
-void Assignment::setType(AssignmentType tVal, string customName)
+void Assignment::setType(string customName)
 {
-    if (!tVal == Custom){
-        //some error throwing should go here
-        return;
-    } else {
         type = Custom;
         customType = customName;
-        return;
-    }
 }

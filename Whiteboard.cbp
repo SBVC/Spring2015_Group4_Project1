@@ -2,28 +2,17 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Spring2015_Group4_Project1" />
+		<Option title="Whiteboard" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/Spring2015_Group4_Project1" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-					<Add directory="include" />
-				</Compiler>
-			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Spring2015_Group4_Project1" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/Whiteboard" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,13 +23,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/Assignment.h" />
-		<Unit filename="include/AssignmentType.h" />
-		<Unit filename="include/whiteboard.h" />
-		<Unit filename="main.cpp" />
 		<Unit filename="src/Assignment.cpp" />
+		<Unit filename="src/Assignment.h" />
+		<Unit filename="src/AssignmentType.h" />
 		<Unit filename="src/W06L.cpp" />
+		<Unit filename="src/main.cpp" />
 		<Unit filename="src/whiteboard.cpp" />
+		<Unit filename="src/whiteboard.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

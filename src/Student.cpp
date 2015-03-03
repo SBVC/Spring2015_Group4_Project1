@@ -1,4 +1,5 @@
 #include "Student.h"
+#include <sstream>
 #include <iostream>
 
 using namespace std;
@@ -22,6 +23,14 @@ Student::Student(string init_lastName, string init_firstName) {
     id        = get_nextID();
     lastName  = init_lastName;
     firstName = init_firstName;
+
+}
+
+string Student::get_namedID() {
+
+    stringstream convert;
+    convert << "s" << id;
+    return convert.str();
 
 }
 

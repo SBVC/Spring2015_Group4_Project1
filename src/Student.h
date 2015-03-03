@@ -20,12 +20,13 @@ class Student{
         Student(int init_id, string init_lastName, string init_firstName); // DEPRECATED
 
         // setters
-        void set_lastName(string init_lastName){ lastName = init_lastName; }
+        void set_lastName(string init_lastName)  { lastName = init_lastName; }
         void set_firstName(string init_firstName){ firstName = init_firstName; }
 
         // getters
-        int get_id(){ return id; }
-        string get_lastName(){ return lastName; }
+        int get_id()          { return id; }
+        string get_namedID();
+        string get_lastName() { return lastName; }
         string get_firstName(){ return firstName; }
 
         // defaults

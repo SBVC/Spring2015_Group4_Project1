@@ -1,5 +1,5 @@
 #include "AssignmentTests.h"
-//#include "StudentTests.h"
+#include "StudentTests.h"
 
 int main()
 {

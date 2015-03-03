@@ -106,13 +106,13 @@ SUITE(AssignmentTests)
     // Test getType method with a default object and a custom type.
     TEST(getCustomTypeTest)
     {
-        string fakeTitle = "Fake";
+        string fakeType = "Fake";
 
         Assignment invalidAssignment = Assignment();
         CHECK_EQUAL(Assignment::defaultCustomType, invalidAssignment.getType());
 
-        Assignment fakeAssignment = Assignment("Fake", fakeTitle);
-        CHECK_EQUAL(fakeTitle, fakeAssignment.getType());
+        Assignment fakeAssignment = Assignment("Some Title That Doesn't Matter", fakeType);
+        CHECK_EQUAL(fakeType, fakeAssignment.getType());
     }
 
     // Test setTitle method.

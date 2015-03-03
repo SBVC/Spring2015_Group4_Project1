@@ -1,5 +1,8 @@
 #include "Assignment.h"
 #include "AssignmentType.h"
+#include <sstream>
+
+using namespace std;
 
 unsigned int Assignment::nextID = 0;
 

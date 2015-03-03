@@ -41,6 +41,7 @@ class Assignment
         AssignmentType type;
 };
 
-#include "Assignment.cpp" //why is this needed here? it wasn't needed before
+//#include "Assignment.cpp" //why is this needed here? it wasn't needed before
+// why WAS that needed and now breaks everything and had to be removed?!
 
 #endif // ASSIGNMENT_H

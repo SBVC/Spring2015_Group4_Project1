@@ -3,23 +3,35 @@
 
 #include <string>
 
+using namespace std;
+
 class Student{
     private:
-        int id;
-        std::string lastName;
-        std::string firstName;
+        static int nextID;
+        int        id;
+        string     lastName;
+        string     firstName;
+    protected:
+        static int get_nextID() { return nextID++; }
     public:
+        // constructors
         Student();
-        Student(int init_id, std::string init_lastName, std::string init_firstName);
+        Student(string init_lastName, string init_firstName);
+        Student(int init_id, string init_lastName, string init_firstName); // DEPRECATED
+
         // setters
-        //void set_id(int init_id){ id = init_id; }
-        //void set_lastName(std::string init_lastName){ lastName = init_lastName; }
-        //void set_firstName(std::string init_firstName){ firstName = init_firstName; }
+        void set_lastName(string init_lastName){ lastName = init_lastName; }
+        void set_firstName(string init_firstName){ firstName = init_firstName; }
 
         // getters
         int get_id(){ return id; }
-        std::string get_lastName(){ return lastName; }
-        std::string get_firstName(){ return firstName; }
+        string get_lastName(){ return lastName; }
+        string get_firstName(){ return firstName; }
+
+        // defaults
+        const static int defaultID;
+        const static string defaultLastName;
+        const static string defaultFirstName;
 
 };
 

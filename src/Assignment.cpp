@@ -3,18 +3,23 @@
 
 unsigned int Assignment::nextID = 0;
 
+const string Assignment::defaultTitle = "Invalid";
+const string Assignment::defaultCustomType = "Invalid";
+const AssignmentType Assignment::defaultType = Quiz;
+const unsigned int Assignment::defaultMaxScore = 100;
+
 Assignment::Assignment()
 {
-    id = nextID;    nextID++;
-    title = "Title";
+    id = getNextID();
+    title = defaultTitle;
     type = Custom;
-    maxScore = 100;
-    customType = "Invalid";
+    maxScore = defaultMaxScore;
+    customType = defaultCustomType;
 }
 
 Assignment::Assignment(string titleVal, string sType, unsigned int iMaxScore)
 {
-    id = nextID;    nextID++;
+    id = getNextID();
     title = titleVal;
     maxScore = iMaxScore;
     if (sType == "Quiz"){
@@ -33,17 +38,17 @@ Assignment::Assignment(string titleVal, string sType, unsigned int iMaxScore)
 
 Assignment::Assignment(string titleVal)
 {
-    id = nextID;    nextID++;
+    id = getNextID();
     title = titleVal;
-    maxScore = 100;
-    type = Quiz;
+    maxScore = defaultMaxScore;
+    type = defaultType;
 }
 
 Assignment::Assignment(string titleVal, string sType)
 {
-    id = nextID;    nextID++;
+    id = getNextID();
     title = titleVal;
-    maxScore = 100;
+    maxScore = defaultMaxScore;
     if (sType == "Quiz"){
         type = Quiz;
     } else if (sType == "Exam"){
@@ -60,10 +65,10 @@ Assignment::Assignment(string titleVal, string sType)
 
 Assignment::Assignment(string titleVal, unsigned int iMaxScore)
 {
-    id = nextID;    nextID++;
+    id = getNextID();
     title = titleVal;
     maxScore = iMaxScore;
-    type = Quiz;
+    type = defaultType;
 }
 
 string Assignment::getID()
@@ -86,13 +91,17 @@ string Assignment::getType()
     } else if (type == Custom){
         return customType;
     } else {
-        // this is terrible, pretend it doesn't exist, okay?
-        return "DUN FUCKED UP AND DID SOMETHING IMPOSSIBLE";
+        //figure out how to throw an error and throw one here
     }
 }
 
 void Assignment::setType(string customName)
 {
-        type = Custom;
-        customType = customName;
+    type = Custom;
+    customType = customName;
+}
+
+unsigned int Assignment::getNextID()
+{
+    return nextID++;
 }

@@ -23,7 +23,15 @@ class Assignment
         string getType();
         void setType(AssignmentType val) { type = val; }
         void setType(string customName);
-    //protected:
+
+        const static string defaultTitle;
+        const static string defaultCustomType;
+        const static AssignmentType defaultType;
+        const static unsigned int defaultMaxScore;
+
+    protected:
+        unsigned int getNextID();
+
     private:
         static unsigned int nextID;
         unsigned int maxScore;
@@ -33,6 +41,6 @@ class Assignment
         AssignmentType type;
 };
 
-#include "Assignment.cpp" //why
+#include "Assignment.cpp" //why is this needed here? it wasn't needed before
 
 #endif // ASSIGNMENT_H

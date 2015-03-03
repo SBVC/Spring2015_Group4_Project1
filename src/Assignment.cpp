@@ -1,6 +1,7 @@
 #include "Assignment.h"
 #include "AssignmentType.h"
 #include <sstream>
+#include <iostream>
 
 using namespace std;
 
@@ -15,63 +16,40 @@ Assignment::Assignment()
 {
     id = getNextID();
     title = defaultTitle;
-    type = Custom;
+    type = defaultCustomType;
     maxScore = defaultMaxScore;
-    customType = defaultCustomType;
 }
 
-Assignment::Assignment(string titleVal, string sType, unsigned int iMaxScore)
+Assignment::Assignment(string sTitle, string sType, unsigned int iMaxScore)
 {
     id = getNextID();
-    title = titleVal;
+    title = sTitle;
     maxScore = iMaxScore;
-    if (sType == "Quiz"){
-        type = Quiz;
-    } else if (sType == "Exam"){
-        type = Exam;
-    } else if (sType == "Program"){
-        type = Program;
-    } else if (sType == "Discussion"){
-        type = Discussion;
-    } else {
-        type = Custom;
-        customType = sType;
-    }
+    type = sType;
 }
 
-Assignment::Assignment(string titleVal)
+Assignment::Assignment(string sTitle)
 {
     id = getNextID();
-    title = titleVal;
+    title = sTitle;
     maxScore = defaultMaxScore;
-    type = defaultType;
+    type = defaultCustomType;
 }
 
-Assignment::Assignment(string titleVal, string sType)
+Assignment::Assignment(string sTitle, string sType)
 {
     id = getNextID();
-    title = titleVal;
+    title = sTitle;
     maxScore = defaultMaxScore;
-    if (sType == "Quiz"){
-        type = Quiz;
-    } else if (sType == "Exam"){
-        type = Exam;
-    } else if (sType == "Program"){
-        type = Program;
-    } else if (sType == "Discussion"){
-        type = Discussion;
-    } else {
-        type = Custom;
-        customType = sType;
-    }
+    type = sType;
 }
 
-Assignment::Assignment(string titleVal, unsigned int iMaxScore)
+Assignment::Assignment(string sTitle, unsigned int iMaxScore)
 {
     id = getNextID();
-    title = titleVal;
+    title = sTitle;
     maxScore = iMaxScore;
-    type = defaultType;
+    type = defaultCustomType;
 }
 
 string Assignment::getID()
@@ -81,31 +59,23 @@ string Assignment::getID()
     return convert.str();
 }
 
-string Assignment::getType()
+// DEPRECATED
+void Assignment::setType(AssignmentType val)
 {
-    if (type == Quiz){
-        return "Quiz";
-    } else if (type == Exam){
-        return "Exam";
-    } else if (type == Program){
-        return "Program";
-    } else if (type == Discussion){
-        return "Discussion";
-    } else if (type == Custom){
-        return customType;
+    // Log for using deprecated code.
+    clog << "Assignment a" << id << " was assigned a type using the deprecated setType(AssignmentType val) method." << endl;
+
+    if (val == Quiz){
+        type = "Quiz";
+    } else if (val == Exam){
+        type = "Exam";
+    } else if (val == Program){
+        type = "Program";
+    } else if (val == Discussion){
+        type = "Discussion";
     } else {
-        //figure out how to throw an error and throw one here
-        //throw invalid type exception
+        type = defaultCustomType;
+        // detailed error message about using invalid type AND deprecated method
+        cerr << "Assignment a" << id << " was assigned an invalid type using the deprecated setType(AssignmentType val) method. Assignment a" << id << "'s type has been defaulted to " << defaultCustomType << "." << endl;
     }
-}
-
-void Assignment::setType(string customName)
-{
-    type = Custom;
-    customType = customName;
-}
-
-unsigned int Assignment::getNextID()
-{
-    return nextID++;
 }

@@ -9,36 +9,41 @@ using namespace std;
 class Assignment
 {
     public:
+        // Constructors
         Assignment();
-        Assignment(string titleVal, string sType, unsigned int iMaxScore);
-        Assignment(string titleVal);
-        Assignment(string titleVal, string sType);
-        Assignment(string titleVal, unsigned int iMaxScore);
-        unsigned int getMaxScore() { return maxScore; }
-        void setMaxScore(unsigned int val) { maxScore = val; }
-        string getID();
-        unsigned int getRawID() { return id; }
-        string getTitle() { return title; }
-        void setTitle(string val) { title = val; }
-        string getType();
-        void setType(AssignmentType val) { type = val; }
-        void setType(string customName);
+        Assignment(string sTitle, string sType, unsigned int iMaxScore);
+        Assignment(string sTitle);
+        Assignment(string sTitle, string sType);
+        Assignment(string sTitle, unsigned int iMaxScore);
 
+        // Getters
+        unsigned int getMaxScore() { return maxScore; }
+        string       getID();
+        unsigned int getRawID()    { return id; }
+        string       getTitle()    { return title; }
+        string       getType()     { return type; }
+
+        // Setters
+        void setMaxScore(unsigned int val) { maxScore = val; }
+        void setTitle(string val)          { title = val; }
+        void setType(AssignmentType val);                     // DEPRECATED
+        void setType(string val)           { type  = val; }
+
+        // Defaults
         const static string defaultTitle;
         const static string defaultCustomType;
-        const static AssignmentType defaultType;
+        const static AssignmentType defaultType;  // DEPRECATED
         const static unsigned int defaultMaxScore;
 
     protected:
-        unsigned int getNextID();
+        unsigned int getNextID() { return nextID++; }
 
     private:
         static unsigned int nextID;
-        unsigned int maxScore;
-        unsigned int id;
-        string title;
-        string customType;
-        AssignmentType type;
+        unsigned int        maxScore;
+        unsigned int        id;
+        string              title;
+        string              type;
 };
 
 //#include "Assignment.cpp" //why is this needed here? it wasn't needed before

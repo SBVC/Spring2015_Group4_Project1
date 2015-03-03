@@ -3,6 +3,7 @@
 
 #include "UnitTest++.h"
 #include "Assignment.h"
+#include "Assignment.cpp"
 #include "AssignmentType.h"
 
 using namespace std;
@@ -51,7 +52,7 @@ SUITE(AssignmentTests)
 
         Assignment simpleAssignment = Assignment(title);
         CHECK_EQUAL(title, simpleAssignment.getTitle());
-        CHECK_EQUAL("Quiz", simpleAssignment.getType());
+        CHECK_EQUAL(Assignment::defaultCustomType, simpleAssignment.getType());
         CHECK_EQUAL(Assignment::defaultMaxScore, simpleAssignment.getMaxScore());
 
         Assignment simpleAssignment2 = Assignment(title, customType);
@@ -61,7 +62,7 @@ SUITE(AssignmentTests)
 
         Assignment simpleAssignment3 = Assignment(title, maxScore);
         CHECK_EQUAL(title, simpleAssignment3.getTitle());
-        CHECK_EQUAL("Quiz", simpleAssignment3.getType());
+        CHECK_EQUAL(Assignment::defaultCustomType, simpleAssignment3.getType());
         CHECK_EQUAL(maxScore, simpleAssignment3.getMaxScore());
 
         Assignment assignment = Assignment(title, customType, maxScore);
@@ -99,7 +100,7 @@ SUITE(AssignmentTests)
     {
         Assignment quizAssignment = Assignment("Some Title", Assignment::defaultType);
         //CHECK_EQUAL(Assignment::defaultType, quizAssignment.getType());
-        CHECK_EQUAL("Quiz", quizAssignment.getType());
+        CHECK_EQUAL(Assignment::defaultCustomType, quizAssignment.getType());
     }
 
     // Test getType method with a default object and a custom type.
@@ -114,10 +115,22 @@ SUITE(AssignmentTests)
         CHECK_EQUAL(fakeTitle, fakeAssignment.getType());
     }
 
+    // Test setTitle method.
+    TEST(setTitleTest)
+    {
+        string title = "Custom Title";
+
+        Assignment assignment = Assignment();
+        assignment.setTitle(title);
+        CHECK_EQUAL(title, assignment.getTitle());
+    }
+
     // Test setType method with enumerated value.
+    // DEPRECATED
     TEST(setEnumeratedTypeTest)
     {
-        Assignment invalidAssignment = Assignment(Assignment::defaultTitle, Discussion);
+        Assignment invalidAssignment = Assignment();
+        invalidAssignment.setType(Discussion);
         CHECK_EQUAL("Discussion", invalidAssignment.getType());
     }
 

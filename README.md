@@ -1,1 +1,3 @@
-# Spring2015_Group4_Project1
+# Whiteboard
+
+Whiteboard is an interactive program designed for keeping track of a selection of students and their scores.

@@ -38,7 +38,7 @@ SUITE(AssignmentTests)
     }
 
     // Tests ALL constructor forms.
-    TEST(constructorTest)
+    TEST(constructorsTest)
     {
         string title = "Custom Title";
         string customType = "Custom Type";

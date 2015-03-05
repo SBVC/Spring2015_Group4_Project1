@@ -4,34 +4,32 @@
 #include "AssignmentType.h"
 #include <string>
 
-using namespace std;
-
 class Assignment
 {
     public:
         // Constructors
         Assignment();
-        Assignment(string sTitle, string sType, unsigned int iMaxScore);
-        Assignment(string sTitle);
-        Assignment(string sTitle, string sType);
-        Assignment(string sTitle, unsigned int iMaxScore);
+        Assignment(std::string sTitle, std::string sType, unsigned int iMaxScore);
+        Assignment(std::string sTitle);
+        Assignment(std::string sTitle, std::string sType);
+        Assignment(std::string sTitle, unsigned int iMaxScore);
 
         // Getters
         unsigned int getMaxScore() { return maxScore; }
-        string       getID();
+        std::string  getID();
         unsigned int getRawID()    { return id; }
-        string       getTitle()    { return title; }
-        string       getType()     { return type; }
+        std::string  getTitle()    { return title; }
+        std::string  getType()     { return type; }
 
         // Setters
         void setMaxScore(unsigned int val) { maxScore = val; }
-        void setTitle(string val)          { title = val; }
+        void setTitle(std::string val)     { title = val; }
         void setType(AssignmentType val);                     // DEPRECATED
-        void setType(string val)           { type  = val; }
+        void setType(std::string val)      { type  = val; }
 
         // Defaults
-        const static string defaultTitle;
-        const static string defaultCustomType;
+        const static std::string defaultTitle;
+        const static std::string defaultCustomType;
         const static AssignmentType defaultType;  // DEPRECATED
         const static unsigned int defaultMaxScore;
 
@@ -42,11 +40,8 @@ class Assignment
         static unsigned int nextID;
         unsigned int        maxScore;
         unsigned int        id;
-        string              title;
-        string              type;
+        std::string         title;
+        std::string         type;
 };
-
-//#include "Assignment.cpp" //why is this needed here? it wasn't needed before
-// why WAS that needed and now breaks everything and had to be removed?!
 
 #endif // ASSIGNMENT_H

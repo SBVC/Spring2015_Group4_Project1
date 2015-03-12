@@ -34,6 +34,8 @@
 		<Unit filename="src/Student.h" />
 		<Unit filename="src/W06L.cpp" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/whiteboard.cpp" />
+		<Unit filename="src/whiteboard.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

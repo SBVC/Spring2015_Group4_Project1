@@ -1,0 +1,218 @@
+/*source.cpp
+*
+*
+*
+*/
+#include<iostream>
+#include "Student.h"
+using namespace std;
+
+void studentSearchMenu();								//Prototypes
+void addNewStudent(Student arr[], int count);
+void listAllStudents(Student arr[], int count);
+
+int main()
+{
+	Student listOfStudents[100] = { Student(1789, "Washington", "George"),		//List of prepopulated students(we can always change)
+									Student(1797, "Adams", "John"),
+									Student(1801, "Jefferson", "Thomas")};	
+
+		int count = 3;				//count is the number of prepopulated students
+	
+		cout << "Welcome to WhiteBoard" << endl << endl;
+		while (true)												//Main menu
+		{
+		cout << "Please select one of the following: " << endl;
+		cout << "1. List all students" << endl;
+		cout << "2. Search for a student" << endl;
+		cout << "3. Add a new student" << endl;
+		cout << "4. Exit" << endl;
+		cout << "Enter [1-4]" << endl;
+
+		int input;
+		cin >> input;
+		switch (input)									
+		{												
+		case 1:
+				listAllStudents(listOfStudents, count);
+			break;
+		case 2:
+			studentSearchMenu();					
+			break;
+		case 3:
+			addNewStudent(listOfStudents, count);
+			count++;
+			break;
+		case 4:
+			cout << "You chose option 4" << endl;
+			break;
+		case 20966:
+			cout << "You entered the back door" << endl;
+			break;
+		default:
+			cout << "Invalid entry. Please select again" << endl;
+			break;
+		}
+
+	}
+	system("pause");
+	return 0;
+}
+///Exiting Main
+
+void studentSearchMenu()									//This function just prints the student search menu
+{
+	cout << "How do you want to search for the student?\n";
+	cout << "1. Search by student ID\n";
+	cout << "2. Search by student last name\n";
+	cout << "3. Search by student first name\n";
+	cout << "4. Search by student total grade\n";
+	cout << "5. Return to main menu\n";
+	cout << "Enter [1-5]: ";
+	int input;
+	cin >> input;
+	switch (input)
+	{
+	case 1:
+		cout << "You chose to search by student ID\n";
+		break;
+	case 2:
+		cout << "You chose to search by students last name\n";
+		break;
+	case 3:
+		cout << "You chose to search by students first name\n";
+		break;
+	case 4:
+		cout << "You chose to search by students total grade\n";
+		break;
+	case 5:
+		cout << "You chose to return to the main menu\n";
+		break;
+	default:
+		cout << "Invalid entry. Please try again.";
+		break;
+	}
+}
+void addNewStudent(Student arr[], int count)			//Add new student menu
+{
+	string lName, fName;
+	int id;
+	cout << "Student last name: " << endl;
+	cin >> lName;
+	cout << "Student first name: " << endl;
+	cin >> fName;
+	cout << "Student ID: " << endl;
+	cin >> id;
+	Student newStu(id, lName, fName);
+	arr[count] = newStu;
+	cout << "\nAdd successful." << endl;
+}
+void listAllStudents(Student arr[], int count)				//List all students
+{
+	for (int i = 0; i < count; i++)
+	{
+		Student a = arr[i];
+		cout << "Id: " << a.get_id() << " " << "Name: " << a.get_lastName() << ", " << a.get_firstName() << endl;
+	}
+	cout << endl;
+}
+
+
+
+/*Student.h
+* I just took chads header file and added it into this one
+*
+*/
+#ifndef WHITEBOARD_H
+#define WHITEBOARD_H
+
+#include <string>
+
+class Student{
+private:
+	int id;
+	std::string lastName;
+	std::string firstName;
+public:
+	Student();
+	Student(int init_id, std::string init_lastName, std::string init_firstName);
+	// setters
+	//void set_id(int init_id){ id = init_id; }
+	//void set_lastName(std::string init_lastName){ lastName = init_lastName; }
+	//void set_firstName(std::string init_firstName){ firstName = init_firstName; }
+
+	// getters
+	int get_id(){ return id; }
+	std::string get_lastName(){ return lastName; }
+	std::string get_firstName(){ return firstName; }
+
+};
+#endif 
+
+
+/*Student.cpp 
+*
+*
+*/
+#include "Student.h"
+
+using namespace std;
+
+Student::Student(){
+	id = -1;
+	lastName = "VOID";
+	firstName = "VOID";
+
+}
+Student::Student(int init_id, string init_lastName, string init_firstName){
+	id = init_id;
+	lastName = init_lastName;
+	firstName = init_firstName;
+}
+
+/*Assignment.h
+*
+*
+*
+*/
+#ifndef ASSIGNMENT_H
+#define ASSIGNMENT_H
+class Assignment
+{
+private:
+	int aType;
+	int ptsEarned;
+	int ptsPossible;
+
+public:
+	Assignment();
+	Assignment(int t, int pts, int possiblepts);
+	int getPtsEarned();
+	int getPtsPossible();
+	int getAssignmentType();
+	const int DISC = 0;
+	const int HW = 1;
+	const int QUIZ = 2;
+	const int EXAM = 3;
+};
+#endif
+
+
+/* Assignment.cpp
+*
+*
+*/
+#include "Assignment.h"
+
+Assignment::Assignment()
+{
+	aType = -1;
+	ptsEarned = 0;
+	ptsPossible = 100;
+}
+Assignment::Assignment(int t, int pts, int possiblepts)
+{
+	aType = t;
+	ptsEarned = pts;
+	ptsPossible = possiblepts;
+}
